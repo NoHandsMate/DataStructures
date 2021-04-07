@@ -35,10 +35,10 @@ int main() {
 
 
 
-    //deQueue removes element entered first i.e. 1
+    //deQueue removes element entered first i.e. 1, returning an optional object
     auto result = queue.Dequeue();
 
-    std::cout << result;
+    std::cout << *result;
 
 
 

@@ -6,6 +6,7 @@
 #define DATASTRUCTURES_QUEUE_HPP
 
 #include <iostream>
+#include <optional>
 
 static constexpr int MAX_ITEM = 5;
 
@@ -20,7 +21,7 @@ public:
 
     constexpr void Enqueue(const T&& item) {
 
-        if(!isFull() && isEmpty()) {
+        if(!isFull() && isEmpty()) { // Check if the Queue is initialized
            first_element++;
            last_element++;
            queue[first_element] = item;
@@ -40,7 +41,7 @@ public:
         }
     }
 
-    constexpr auto Dequeue() {
+    constexpr std::optional<T> Dequeue() {
 
         if(!isEmpty()) {
             auto de_queued = queue[first_element];
@@ -48,6 +49,7 @@ public:
             return de_queued;
         } else {
             std::cout << "Could not Dequeue: empty" << '\n';
+            return std::nullopt;
         }
 
     }
